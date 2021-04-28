@@ -18,8 +18,8 @@ name = "Maxima_Count"
 //saves each image as *_Maxima.jpg....for some reason filename returns extensions
 function countMaxima(input, filename) {
 	open(input + filename);
-	run("Find Maxima...", "prominence=21 exclude output=[Point Selection]");
-	saveAs("png", input + filename + "_Maxima");
+	run("Find Maxima...", "prominence=21 exclude output=[Maxima Within Tolerance]");
+	saveAs("jpg", input + filename + "_Maxima");
 	close();
 	run("Find Maxima...", "prominence=21 exclude output=Count");
 	close();
