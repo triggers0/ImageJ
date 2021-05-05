@@ -1,4 +1,4 @@
-//quick and dirty cell counting using Process Find Maxima
+//quick and dirty cell counting using Process Find Maxima by JSK
 
 /* 
 ***  IMPORTANT  ***
@@ -10,9 +10,11 @@ manually count the points found in the legend and SUBTRACT this number from all 
 //input directory, and files to be called etc...
 input = getDirectory("Choose a Directory to Analyze");
 filename = File.nameWithoutExtension;
+dirname = File.getName(input);
 list = getFileList(input);
+
 //results .csv file name
-name = "Maxima_Count"
+name = dirname + "_Maxima_Count";
 
 //cell counting function using find Maxima process.
 //saves each image as *_Maxima.jpg....for some reason filename returns extensions
@@ -24,6 +26,13 @@ function countMaxima(input, filename) {
 	run("Find Maxima...", "prominence=21 exclude output=Count");
 	close();
 }
+
+//incase open, close previous results
+if (nResults > 0) {
+	selectWindow("Results");
+	run("Close");
+};
+
 //imageJ is dumb and cant count properly, tell it to straighten up with batchmode
 setBatchMode(true);
 
